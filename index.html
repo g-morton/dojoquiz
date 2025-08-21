@@ -17,6 +17,10 @@
 <audio id="correct" src="correct.mp3"></audio>
 <audio id="wrong" src="wrong.mp3"></audio>
 <script>
+let questions = [];
+let ladder = [];
+
+/*  
 const ladder = [
   "Disgruntled employee",
   "Busy-work worker",
@@ -43,6 +47,8 @@ const questions = [
   { q: "In the department, we should release product updates...", a: ["Every day","When they are ready","Start of each term","When customers complain"], correct: 2 },
   { q: "Which principal is not part of the Lean Product Manifesto?", a: ["Customer problems and needs over internal requirements","Data driven experiments over preconceived solutions","Customer problem roadmaps over feature roadmaps","Tech debt reduction over feature expansion"], correct: 4 },
 ];
+*/
+  
 let idx = 0, score = 0, sel = null, rev = false;
 const app = document.getElementById('app');
 
@@ -91,7 +97,25 @@ function render(){
     else { idx++; sel=null; rev=false; render(); }
   };
 }
-showStart();
+
+async function init() {
+  try {
+    const [qRes, lRes] = await Promise.all([
+      fetch('questions.json'),
+      fetch('ladder.json')
+    ]);
+    if (!qRes.ok || !lRes.ok) throw new Error('Failed to fetch data');
+    questions = await qRes.json();
+    ladder = await lRes.json();
+    showStart();
+  } catch (err) {
+    app.innerHTML = `<p>Could not load quiz data. Please check questions.json and ladder.json.</p>`;
+    console.error(err);
+  }
+}
+init();
+  
+//showStart();
 </script>
 </body>
 </html>
