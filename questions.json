@@ -1,0 +1,4 @@
+[
+  { "q": "Capital of France?", "a": ["Berlin","Madrid","Paris","Rome"], "correct": 2 },
+  { "q": "Red Planet?", "a": ["Earth","Mars","Jupiter","Venus"], "correct": 1 }
+]
