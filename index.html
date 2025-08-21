@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+  <style>
+    html, body { height: 100%; margin: 0; font-size:large;}
+    body { display: flex; align-items: center; justify-content: center; font-family: sans-serif; background: linear-gradient(to bottom, #0a1a3a, #000); color: #fff; text-align: center; }
+    #qbox, #answers button { background: #0a1a3a; border: 2px solid #fff; color: #fff; font-weight: bold; padding: 16px; margin: 8px; font-size: large; }
+    #answers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  </style>
+</head>
+<body>
+<div id="app" style="width:80%"></div>
+<audio id="suspense" src="suspense.mp3" loop></audio>
+<audio id="lockin" src="lockin.mp3" loop></audio>
+<audio id="correct" src="correct.mp3"></audio>
+<audio id="wrong" src="wrong.mp3"></audio>
+<script>
+const ladder = [
+  "Disgruntled employee",
+  "Busy-work worker",
+  "Too many meetings",
+  "Stuck in the inbox",
+  "Occasionally productive",
+
+  "Waterfall rider",
+  "You're on mute",
+  "Numb in the scrum",
+  "Gant chart gazer",
+  "Lost in features",
+  
+  "Roadmap wrangler",
+  "OKR master",
+  "Customer obsessed",
+  "World’s best Product Manager",
+  "Dojo Sensei"
+];
+
+const questions = [
+  { q: "How best describe a product owner?", a: ["Manages customer relationships","Communicates with stakeholders","Accountable for the product","Leads the development team"], correct: 3 },
+  { q: "MVP stands for...", a: ["Many Valuable Products","Minimal Viable Product","Multiple Valued Product","Managed Vision Priority"], correct: 2 },
+  { q: "In the department, we should release product updates...", a: ["Every day","When they are ready","Start of each term","When customers complain"], correct: 2 },
+  { q: "Which principal is not part of the Lean Product Manifesto?", a: ["Customer problems and needs over internal requirements","Data driven experiments over preconceived solutions","Customer problem roadmaps over feature roadmaps","Tech debt reduction over feature expansion"], correct: 4 },
+];
+let idx = 0, score = 0, sel = null, rev = false;
+const app = document.getElementById('app');
+
+function playSuspense(){ const a=document.getElementById('suspense'); a.pause(); a.currentTime=0; a.loop=true; a.play(); }
+function stopSuspense(){ const a=document.getElementById('suspense'); a.pause(); a.currentTime=0; a.loop=false; }
+function playLock(){ const a=document.getElementById('lockin'); a.pause(); a.currentTime=0; a.loop=true; a.play(); }
+function stopLock(){ const a=document.getElementById('lockin'); a.pause(); a.currentTime=0; }
+function playReveal(){ const id = sel===questions[idx].correct - 1 ? 'correct' : 'wrong'; document.getElementById(id).play(); }
+
+function showStart(){
+  app.innerHTML = '<h1>Who Wants to be a Millionaire?</h1><button id="startBtn">Start Game</button>';
+  document.getElementById('startBtn').onclick = () => { idx=0;score=0;sel=null;rev=false; render(); };
+}
+
+function displayQuestion(){
+  const q = questions[idx];
+  if(sel === null){ stopLock(); stopSuspense(); playSuspense(); }
+  app.innerHTML = `<div id='qbox'>${q.q}</div><div id='answers'></div><p>${!sel?'Lock in an answer':!rev?'Click to reveal':'Click to continue'}</p>`;
+  const aDiv = document.getElementById('answers');
+  q.a.forEach((t,i)=>{
+    const b = document.createElement('button');
+    b.textContent = String.fromCharCode(65+i)+'. '+t;
+    b.style.border = sel===i ? '2px solid orange' : '2px solid white';
+    b.style.background = rev && i===q.correct - 1 ? 'green' : '#0a1a3a';
+    b.onclick = e => {
+      e.stopPropagation(); if(sel!==null) return;
+      sel=i; stopSuspense(); playLock(); render();
+    };
+    aDiv.appendChild(b);
+  });
+}
+
+function endScreen(){
+  stopSuspense(); stopLock();
+  app.innerHTML=`<h1>Score: ${score}/${questions.length}</h1><p>You are awarded<h2>${ladder[score-1]||ladder[0]}</h2><br/><br/><p>Click to restart</p>`;
+  app.onclick=()=>{ idx=0; score=0; sel=null; rev=false; showStart(); };
+}
+
+function render(){
+  if(idx>=questions.length){ endScreen(); return; }
+  displayQuestion();
+  app.onclick = () => {
+    if(sel === null) return;
+    stopLock();
+    if(!rev){ rev=true; playReveal(); if(sel===questions[idx].correct - 1) score++; render(); }
+    else { idx++; sel=null; rev=false; render(); }
+  };
+}
+showStart();
+</script>
+</body>
+</html>
