@@ -30,7 +30,7 @@ function stopLock(){ const a=document.getElementById('lockin'); a.pause(); a.cur
 function playReveal(){ const id = sel===questions[idx].correct - 1 ? 'correct' : 'wrong'; document.getElementById(id).play(); }
 
 function showStart(){
-  app.innerHTML = '<h1>Who wants to be a Dojo Master?</h1><button id="startBtn">Start Game</button>';
+  app.innerHTML = '<h1>Who wants to be a Dojo Master?</h1><button id="startBtn">Start a new game</button>';
   document.getElementById('startBtn').onclick = () => { idx=0;score=0;sel=null;rev=false; render(); };
 }
 
@@ -41,19 +41,21 @@ function displayQuestion(){
   if(sel === null){ stopLock(); stopSuspense(); playSuspense(); }
   //app.innerHTML = `<div id='qbox'>${q.q}</div><div id='answers'></div><p>${!sel?'Lock in an answer':!rev?'Click to reveal':'Click to continue'}</p>`;
   
-let ranksHTML = '';
-if(score === 0){
-  ranksHTML = `<div>Playing for: "${targetRank}"</div>`;
-} else if(score < ladder.length){
-  ranksHTML = `<div>Current rank: "${currentRank}"</div><div>Playing for: "${targetRank}"</div>`;
-} else {
-  ranksHTML = `<div>Current rank: "${currentRank}"</div>`;
-}
+  let ranksHTML = '';
+  if(score === 0){
+    ranksHTML = `<div>You are now playing for <b>${targetRank}</b></div>`;
+  } else if(score < ladder.length){
+    ranksHTML = `<div>You are <b>${score}.  ${currentRank}</b></div><div>Now playing for <b>${score + 1}.  ${targetRank}</b></div>`;
+  } else {
+    ranksHTML = `<div>You've achieved top rank of <b>${currentRank}</b></div>`;
+  }
 
-app.innerHTML = `<div id="qbox">${q.q}</div>
-<div id="ranks">${ranksHTML}</div>
-<div id="answers"></div>
-<p>${!sel ? 'Lock in an answer' : !rev ? 'Click to reveal' : 'Click to continue'}</p>`;
+  app.innerHTML = `
+  <div id="qbox">${q.q}</div>
+  <div id="answers"></div>
+  <div id="ranks">${ranksHTML}</div>
+  <p>${!sel ? 'Lock in an answer' : !rev ? 'Click to reveal' : 'Click to continue'}</p>
+  `;
 
   const aDiv = document.getElementById('answers');
   q.a.forEach((t,i)=>{
