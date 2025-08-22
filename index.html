@@ -98,7 +98,13 @@ function displayQuestion(){
 
 function endScreen(){
   stopSuspense(); stopLock();
-  app.innerHTML=`<h1>Score: ${score}/${questions.length}</h1><p>You are awarded<h2>${ladder[score-1]||ladder[0]}</h2><br/><br/><p>Click to restart</p>`;
+  app.innerHTML=`<div id="ranks">
+  <h1>${score}/${questions.length}</h1>
+  <p>You are awarded</p>
+  <div style="color:goldenrod ; border-color: goldenrod">${ladder[score-1]||ladder[0]}</div>
+  <br/><br/>
+  <p>Click to restart</p>
+  `;
   app.onclick=()=>{ idx=0; score=0; sel=null; rev=false; showStart(); };
 }
 
