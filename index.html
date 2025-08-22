@@ -36,22 +36,24 @@ function showStart(){
 
 function displayQuestion(){
   const q = questions[idx];
-  const currentRank = ladder[score-1] || ladder[0];
+  const currentRank = score > 0 ? ladder[score-1] : null;
   const targetRank = ladder[Math.min(score, ladder.length-1)];
   if(sel === null){ stopLock(); stopSuspense(); playSuspense(); }
   //app.innerHTML = `<div id='qbox'>${q.q}</div><div id='answers'></div><p>${!sel?'Lock in an answer':!rev?'Click to reveal':'Click to continue'}</p>`;
   
+let ranksHTML = '';
+if(score === 0){
+  ranksHTML = `<div>Playing for: "${targetRank}"</div>`;
+} else if(score < ladder.length){
+  ranksHTML = `<div>Current rank: "${currentRank}"</div><div>Playing for: "${targetRank}"</div>`;
+} else {
+  ranksHTML = `<div>Current rank: "${currentRank}"</div>`;
+}
 
-app.innerHTML = `
-  <div id="qbox">${q.q}</div>
-  <div id="answers"></div>
-  <p>${!sel ? 'Lock in an answer' : !rev ? 'Click to reveal' : 'Click to continue'}</p>
-  <div id="ranks">
-  <div>Score: <h3>Score: ${score}/${questions.length}</h3></div>
-  <div>Current rank: "${currentRank}"</div>
-  <div>Playing for: "${targetRank}"</div>
-  </div>
-  `;
+app.innerHTML = `<div id="qbox">${q.q}</div>
+<div id="ranks">${ranksHTML}</div>
+<div id="answers"></div>
+<p>${!sel ? 'Lock in an answer' : !rev ? 'Click to reveal' : 'Click to continue'}</p>`;
 
   const aDiv = document.getElementById('answers');
   q.a.forEach((t,i)=>{
