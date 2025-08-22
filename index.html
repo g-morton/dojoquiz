@@ -32,7 +32,7 @@ function stopLock(){ const a=document.getElementById('lockin'); a.pause(); a.cur
 function playReveal(){ const id = sel===questions[idx].correct - 1 ? 'correct' : 'wrong'; document.getElementById(id).play(); }
 
 function showStart(){
-  app.innerHTML = '<h1>Who wants to be a Dojo Master?</h1><button id="startBtn">Start a new game</button>';
+  app.innerHTML = '<img src="dojoquiz.png" alt="Who wants to be a Dojo Master?" /><button id="startBtn">Start a new game</button>';
   document.getElementById('startBtn').onclick = () => { idx=0;score=0;sel=null;rev=false; render(); };
 }
 
