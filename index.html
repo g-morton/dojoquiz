@@ -9,25 +9,28 @@
     #startBtn, #qbox, #answers button { background: #0a1a3a; border: 2px solid #fff; color: #fff; font-weight: bold; padding: 16px; margin: 8px; font-size: large; }
     #answers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
     #ranks {margin-top:20px; font-size: larger;}
-    #ranks b {color: goldenrod;}
-
-#splashScreen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh; /* full screen */
-}
-#splashScreen img {
-  max-width: 100%;
-  max-height: 80vh; /* prevent overflow/scroll */
-  object-fit: contain; /* keep aspect ratio */
-}
-#splashScreen button {
-  margin-top: 20px;
-}
-
-
+    #ranks div {
+        font-weight: bold;
+        padding: 5px;
+        border: 2px solid grey;
+        border-radius: 20px;
+        margin-bottom: 10px;
+    }
+    #splashScreen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    #splashScreen img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+    #splashScreen button {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -39,7 +42,6 @@
 <script>
 let questions = [];
 let ladder = [];
-  
 let idx = 0, score = 0, sel = null, rev = false;
 const app = document.getElementById('app');
 
@@ -49,12 +51,6 @@ function playLock(){ const a=document.getElementById('lockin'); a.pause(); a.cur
 function stopLock(){ const a=document.getElementById('lockin'); a.pause(); a.currentTime=0; }
 function playReveal(){ const id = sel===questions[idx].correct - 1 ? 'correct' : 'wrong'; document.getElementById(id).play(); }
 
-  /*
-function showStart(){
-  app.innerHTML = '<img src="dojoquiz.png" alt="Who wants to be a Dojo Master?" /><button id="startBtn">Start a new game</button>';
-  document.getElementById('startBtn').onclick = () => { idx=0;score=0;sel=null;rev=false; render(); };
-}
-*/
 function showStart(){
   app.innerHTML = `
     <div id="splashScreen">
@@ -72,29 +68,25 @@ function displayQuestion(){
   const currentRank = score > 0 ? ladder[score-1] : null;
   const targetRank = ladder[Math.min(score, ladder.length-1)];
   if(sel === null){ stopLock(); stopSuspense(); playSuspense(); }
-  //app.innerHTML = `<div id='qbox'>${q.q}</div><div id='answers'></div><p>${!sel?'Lock in an answer':!rev?'Click to reveal':'Click to continue'}</p>`;
-  
   let ranksHTML = '';
   if(score === 0){
-    ranksHTML = `<div>You are now playing for <b>${targetRank}</b></div>`;
+    ranksHTML = `<div style="border-color: grey">${targetRank}</div>`;
   } else if(score < ladder.length){
-    ranksHTML = `<div>You are <b>${score}.  ${currentRank}</b></div><div>Now playing for <b>${score + 1}.  ${targetRank}</b></div>`;
+    ranksHTML = `<div style="border-color: grey">${score}. ${currentRank}</div> <div style="color:goldenrod ; border-color: goldenrod">${score + 1}. ${targetRank}</div>`;
   } else {
-    ranksHTML = `<div>You've achieved top rank of <b>${currentRank}</b></div>`;
+    ranksHTML = `<div style="color:goldenrod ; border-color: goldenrod">${currentRank}</div>`;
   }
-
   app.innerHTML = `
   <div id="qbox">${q.q}</div>
   <div id="answers"></div>
-  <p style=-"opacity: .5">${!sel ? 'Lock in an answer' : !rev ? 'Click to reveal' : 'Click to continue'}</p>
+  <p style="opacity:0.5">${!sel ? 'Lock in an answer' : !rev ? 'Click to reveal' : 'Click to continue'}</p>
   <div id="ranks">${ranksHTML}</div>
   `;
-
   const aDiv = document.getElementById('answers');
   q.a.forEach((t,i)=>{
     const b = document.createElement('button');
     b.textContent = String.fromCharCode(65+i)+'. '+t;
-    b.style.border = sel===i ? '2px solid orange' : '2px solid white';
+    b.style.border = sel===i ? '2px solid goldenrod' : '2px solid white';
     b.style.background = rev && i===q.correct - 1 ? 'green' : '#0a1a3a';
     b.onclick = e => {
       e.stopPropagation(); if(sel!==null) return;
