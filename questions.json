@@ -1,34 +1,5 @@
 [
-   {
-      "q":"How best describe a product owner?",
-      "a":[
-         "Manages customer relationships",
-         "Communicates with stakeholders",
-         "Accountable for the product",
-         "Leads the development team"
-      ],
-      "correct":3
-   },
-   {
-      "q":"MVP stands for...",
-      "a":[
-         "Many Valuable Products",
-         "Minimal Viable Product",
-         "Multiple Valued Product",
-         "Managed Vision Priority"
-      ],
-      "correct":2
-   },
-   {
-      "q":"In the department, we should release product updates...",
-      "a":[
-         "Every day",
-         "When they are ready",
-         "Start of each term",
-         "When customers complain"
-      ],
-      "correct":2
-   },
+
    {
       "q":"Which principal is not part of the Lean Product Manifesto?",
       "a":[
