@@ -39,9 +39,10 @@ function displayQuestion(){
   const currentRank = ladder[score-1] || ladder[0];
   const targetRank = ladder[Math.min(score, ladder.length-1)];
   if(sel === null){ stopLock(); stopSuspense(); playSuspense(); }
-  //app.innerHTML = `<div id='qbox'>${q.q}</div><div id='answers'></div><p>${!sel?'Lock in an answer':!rev?'Click to reveal':'Click to continue'}</p>`;
+  app.innerHTML = `<div id='qbox'>${q.q}</div><div id='answers'></div><p>${!sel?'Lock in an answer':!rev?'Click to reveal':'Click to continue'}</p>`;
   
-  app.innerHTML = `
+/*  
+app.innerHTML = `
   <div id="qbox">${q.q}</div>
   <div id="answers"></div>
   <p>${!sel ? 'Lock in an answer' : !rev ? 'Click to reveal' : 'Click to continue'}</p>
@@ -51,7 +52,7 @@ function displayQuestion(){
   <div>Playing for: "${targetRank}"</div>
   </div>
   `;
-  
+  */
   const aDiv = document.getElementById('answers');
   q.a.forEach((t,i)=>{
     const b = document.createElement('button');
