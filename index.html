@@ -8,6 +8,8 @@
     body { display: flex; align-items: center; justify-content: center; font-family: sans-serif; background: linear-gradient(to bottom, #0a1a3a, #000); color: #fff; text-align: center; }
     #startBtn, #qbox, #answers button { background: #0a1a3a; border: 2px solid #fff; color: #fff; font-weight: bold; padding: 16px; margin: 8px; font-size: large; }
     #answers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    #ranks {margin-top:20px; font-size: larger;}
+    #ranks b {color: goldenrod;}
   </style>
 </head>
 <body>
@@ -53,8 +55,8 @@ function displayQuestion(){
   app.innerHTML = `
   <div id="qbox">${q.q}</div>
   <div id="answers"></div>
+  <p style=-"opacity: .5">${!sel ? 'Lock in an answer' : !rev ? 'Click to reveal' : 'Click to continue'}</p>
   <div id="ranks">${ranksHTML}</div>
-  <p>${!sel ? 'Lock in an answer' : !rev ? 'Click to reveal' : 'Click to continue'}</p>
   `;
 
   const aDiv = document.getElementById('answers');
