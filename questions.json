@@ -59,6 +59,17 @@
       ],
       "correct": 2
    },
+{
+   "q": "Effective ways of working rely on transparency. Which practice best supports this principle?",
+   "a": [
+      "Making useful information visible and accessible to everyone",
+      "Keeping knowledge archived for future reporting",
+      "Sending routine project updates via email",
+      "Recording notes on sticky notes"
+   ],
+   "correct": 1
+}
+
    {
       "q": "Product-focused organisations aim for 'full stack' teams, meaning...",
       "a": [
@@ -79,6 +90,16 @@
       ],
       "correct": 2
    },
+{
+   "q": "In our current workplace, communication often breaks down because...",
+   "a": [
+      "Everyone uses different Teams channels",
+      "Teams have inconsistent naming convensions for their product backlog items",
+      "Learnings and insights are filtered through too many layers",
+      "Product Owners have too much power when speaking with users"
+   ],
+   "correct": 3
+}
    {
       "q": "Human-Centered Design reminds us to...",
       "a": [
@@ -120,6 +141,16 @@
       ],
       "correct": 1
    },
+{
+   "q": "Architecture works best when it supports delivery. Too often, though, it feels...",
+   "a": [
+      "Like a mysterious blueprint only Gandalf can read",
+      "Well integrated with Agile teams",
+      "Focused only on long-term strategy",
+      "Too abstract to help developers day-to-day"
+   ],
+   "correct": 4
+}
    {
       "q": "DevOps culture promotes:",
       "a": [
@@ -179,5 +210,15 @@
          "They look great in powerpoint presentations"
       ],
       "correct": 1
-   }
+   },
+{
+   "q": "To unlock effective teams, our leadership culture must shift from...",
+   "a": [
+      "Coaching to micro-control",
+      "Commanding to iterative-strategy",
+      "Controling to participative coaching",
+      "Ignoring delivery to ignoring everything"
+   ],
+   "correct": 3
+}
 ]
