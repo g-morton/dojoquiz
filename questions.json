@@ -1,42 +1,183 @@
 [
    {
-      "q":"How best describe a product owner?",
-      "a":[
-         "Manages customer relationships",
-         "Communicates with stakeholders",
-         "Accountable for the product",
-         "Leader of the development team"
+      "q": "In a project mindset, the work ends when the deliverable is handed over. In a product mindset, the focus is on...",
+      "a": [
+         "Delivering documents and sign-offs",
+         "Continuous improvement and customer value",
+         "Stopping at 'go-live' and moving on to a new project",
+         "Handing the product over to BAU"
       ],
-      "correct":3
+      "correct": 2
    },
    {
-      "q":"MVP stands for...",
-      "a":[
-         "Many Valuable Products",
-         "Minimal Viable Product",
-         "Multiple Valued Product",
-         "Managed Vision Priority"
+      "q": "Agile and Human-Centered Design both stress...",
+      "a": [
+         "Trying random things until something works",
+         "Building features based on assumptions",
+         "Relying on working group majority voting",
+         "Co-creating with users and validating real needs"
       ],
-      "correct":2
+      "correct": 4
    },
    {
-      "q":"In the department, we should release product updates...",
-      "a":[
-         "Every day",
-         "When they are ready",
-         "Start of each term",
-         "When customers complain"
+      "q": "An 'us vs them' culture creates...",
+      "a": [
+         "Healthy team competition",
+         "Stronger product ownership",
+         "Fear of sharing and low collaboration",
+         "Faster paced delivery cycles"
       ],
-      "correct":2
+      "correct": 3
    },
    {
-      "q":"Which principal is not part of the Lean Product Manifesto?",
-      "a":[
-         "Tech debt reduction over feature expansion",
-         "Customer problems and needs over internal requirements",
-         "Data driven experiments over preconceived solutions",
-         "Customer problem roadmaps over feature roadmaps"
+      "q": "One Agile ceremony that often gets skipped or downplayed is the Retrospective. Its true purpose is to...",
+      "a": [
+         "Plan upcoming sprints",
+         "Assign blame for outstanding bugs",
+         "Capture lessons learned and drive continuous improvement",
+         "Update management on feature release targets"
       ],
-      "correct":1
+      "correct": 3
+   },
+   {
+      "q": "Traditional change management struggles because...",
+      "a": [
+         "Approvers are too far removed from the feature work",
+         "It empowers the product team directly",
+         "Decisions are made with a coin toss",
+         "It’s iterative and embedded in delivery"
+      ],
+      "correct": 1
+   },
+   {
+      "q": "Why do up to 90% of transformation programs fail?",
+      "a": [
+         "Too many Agile ceremonies",
+         "Lack of leadership accountability to create the right culture",
+         "Poor Wi-Fi",
+         "Insufficient time and budget"
+      ],
+      "correct": 2
+   },
+   {
+      "q": "Product-focused organisations aim for 'full stack' teams, meaning...",
+      "a": [
+         "Teams focus more on their individual skills",
+         "Everyone stacks like Lego bricks",
+         "Teams take turns working from home",
+         "Teams own end-to-end delivery"
+      ],
+      "correct": 4
+   },
+   {
+      "q": "A Lean principle for avoiding duplication is...",
+      "a": [
+         "Publishing screenshots daily to SharePoint",
+         "Opening up product canvases and roadmaps for cross-collaboration",
+         "Managing approvals sooner via Content Manager",
+         "Passing requirements through clear gated governance chains"
+      ],
+      "correct": 2
+   },
+   {
+      "q": "Human-Centered Design reminds us to...",
+      "a": [
+         "Only release what’s cheapest",
+         "Love the problem, not the solution",
+         "Always use dashboards for reporting",
+         "Find the balance with everyone's opinions"
+      ],
+      "correct": 2
+   },
+   {
+      "q": "Instead of guessing, DevOps teams frame features as...",
+      "a": [
+         "Roadmaps of exciting features",
+         "Hypotheses backed by data",
+         "Detailed NFR documents",
+         "Horoscopes"
+      ],
+      "correct": 2
+   },
+   {
+      "q": "What does Lean innovation encourage?",
+      "a": [
+         "Taking risks only in production",
+         "Avoiding change at all costs",
+         "Major launches every year",
+         "Safe-to-fail experiments that drive learning"
+      ],
+      "correct": 4
+   },
+
+   {
+      "q": "Modern Product Management measures what matters. Key metrics include:",
+      "a": [
+         "Delivery speed, customer usage, and live-site health",
+         "Number of PBIs per Sprint",
+         "Count of sprint ceremonies",
+         "Number of bugs fixed"
+      ],
+      "correct": 1
+   },
+   {
+      "q": "DevOps culture promotes:",
+      "a": [
+         "Deploying at least once a month",
+         "Safe releases managed by real people",
+         "Shipping products outside of peak periods",
+         "Repeatable pipelines, feature flags, and automated deployments"
+      ],
+      "correct": 4
+   },
+   {
+      "q": "Not using CI/CD typically leads to:",
+      "a": [
+         "Shorter release cycles",
+         "Merge conflicts, slower feedback, and higher risk",
+         "Higher product quality",
+         "Safer change management"
+      ],
+      "correct": 2
+   },
+   {
+      "q": "In a DevOps culture, work is typically not 'done' until...",
+      "a": [
+         "It’s signed off by the PMO",
+         "It’s approved by the Architecture board",
+         "It’s running in production with monitoring",
+         "It’s reached 1 million Likes"
+      ],
+      "correct": 3
+   },
+   {
+      "q": "As quality culture improves incrementally...",
+      "a": [
+         "Hard costs go down",
+         "Delivery slows down",
+         "Governance increases",
+         "Testing becomes optional"
+      ],
+      "correct": 1
+   },
+   {
+      "q": "Modern deployment practices promote...",
+      "a": [
+         "Blue/Green, Canary, and Feature Flags",
+         "Monthly waterfall sign-offs",
+         "Ship everything on Friday afternoons",
+         "Big-bang releases"
+      ],
+      "correct": 1
+   },
+   {
+      "q": "Why are OKRs useful in Product Management?",
+      "a": [
+         "They align teams to a big vision while allowing autonomy",
+         "They replace sprint goals",
+         "They guarantee 100% success every time",
+         "They look great in powerpoint presentations"
+      ],
+      "correct": 1
    }
 ]
