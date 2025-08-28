@@ -80,7 +80,7 @@
       "correct": 2
    },
 {
-   "q": "In our current workplace, communication often breaks down because...",
+   "q": "In our current workplace, communication most often breaks down because...",
    "a": [
       "Everyone uses different Teams channels",
       "Teams have inconsistent naming convensions for their product backlog items",
@@ -131,7 +131,7 @@
       "correct": 1
    },
 {
-   "q": "Architecture works best when it supports delivery. Too often, though, it feels...",
+   "q": "Architecture works best when it drives delivery. Too often, though, it feels...",
    "a": [
       "Like a mysterious blueprint only Gandalf can read",
       "Well integrated with Agile teams",
